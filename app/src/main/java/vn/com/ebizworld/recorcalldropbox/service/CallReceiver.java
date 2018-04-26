@@ -75,16 +75,21 @@ public class CallReceiver extends BroadcastReceiver {
                 //Went to idle-  this is the end of a call.  What type depends on previous state(s)
                 if(lastState == TelephonyManager.CALL_STATE_RINGING){
                     //Ring but no pickup-  a miss
-                    Toast.makeText(context, "Ringing but no pickup" + savedNumber + " Call time " + callStartTime +" Date " + new Date() , Toast.LENGTH_SHORT).show();
+
+                    String log = "Ringing but no pickup" + savedNumber + " Call time " + callStartTime +" Date " + new Date() ;
+                    Toast.makeText(context,  log, Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onCallStateChanged: " +log);
                 }
                 else if(isIncoming){
+                    String log = "Incoming " + savedNumber + " Call time " + callStartTime ;
+                    Toast.makeText(context,  log, Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onCallStateChanged: " +log);
 
-                    Toast.makeText(context, "Incoming " + savedNumber + " Call time " + callStartTime  , Toast.LENGTH_SHORT).show();
                 }
                 else{
-
-                    Toast.makeText(context, "outgoing " + savedNumber + " Call time " + callStartTime +" Date " + new Date() , Toast.LENGTH_SHORT).show();
-
+                    String log = "outgoing " + savedNumber + " Call time " + callStartTime +" Date " + new Date() ;
+                    Toast.makeText(context,  log, Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onCallStateChanged: " +log);
                 }
 
                 break;
